@@ -1,20 +1,5 @@
 <!doctype html>
-<!--
-  Material Design Lite
-  Copyright 2015 Google Inc. All rights reserved.
 
-  Licensed under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License.
-  You may obtain a copy of the License at
-
-      https://www.apache.org/licenses/LICENSE-2.0
-
-  Unless required by applicable law or agreed to in writing, software
-  distributed under the License is distributed on an "AS IS" BASIS,
-  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  See the License for the specific language governing permissions and
-  limitations under the License
--->
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -45,9 +30,10 @@
     -->
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.deep_purple-pink.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="style.css">
+    
+
     <style>
     #view-source {
       position: fixed;
@@ -60,209 +46,254 @@
     }
     </style>
   </head>
-  <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-      <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
-        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-        </div>
-        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-          <h3>3D Modelling From Images using Semi Supervised Learning</h3>
-        </div>
-        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-        </div>
-        <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
-          <a href="#abstract" class="mdl-layout__tab is-active">Abstract</a>
-          <a href="#overview" class="mdl-layout__tab">Thesis Overview</a>
-          <a href="#localfeatures1" class="mdl-layout__tab">PhotoSynth Dataset</a>
-          <a href="#localfeatures2" class="mdl-layout__tab">Scale Invariant Local Features</a>
-          <a href="#semisuppose" class="mdl-layout__tab">Semi Supervised Human Pose Estimation</a>
-          <a href="#unsuptex" class="mdl-layout__tab">Unsupervised Human Texture Synthesis</a>
-          <a href="#publications" class="mdl-layout__tab">Publications</a>
-        </div>
-      </header>
-      <main class="mdl-layout__content">
-        <div class="mdl-layout__tab-panel is-active" id="abstract">
-          <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-            <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone" style="width: 100%">
-              <div class="mdl-card__supporting-text" style="text-align: justify;">
-                <h4 style="text-align: center;">Abstract</h4>
-                <p>Modelling the world in 3D has been a long standing problem in computer vision. A large variety of techniques exits for 3D modelling from a single image or a collection of images specific to different applications. Among them two widely used techniques are i) Structure-From-Motion (SFM) which reconstructs 3D point clouds of an environment from a collection of images, ii) modelling of a human subject in 3D from a single RGB image. In my thesis I have focused on mitigating some of current issues faced by these methods. I have proposed semi-supervised deep learning techniques which can utilise large volumes of un-annotated in-the-wild datasets to improve accuracy of existing 3D modelling techniques.</p>
-                <p>Finding point correspondences between images using local patch descriptors like SIFT is an essential step in reconstructing 3D using SFM. Currently CNN based descriptor models hold state-of-the-art performance in finding point correspondences. To further improve their the accuracy, we provide a framework to automatically generate pairs of similar and dissimilar patches from a large in-the-wild dataset(PS-Dataset) of image collections exhibiting wide variations in viewpoint and illumination.</p>
-                <p>The robustness of a descriptor to scale is largely attributed to normalising patches in terms of scale before computing its descriptors. However, in certain applications like dense matching of pixels between two images normalising patches is infeasible due to unavailability of scale information at every pixel. Hence, I propose a multi-resolution architecture CNN model to compute scale invariant descriptors without requiring any normalisation. We perform correspondence matching and 3D reconstruction on benchmark datasets using such non-normalized patches to demonstrate its efficacy.</p>
-                <p>In modelling humans from monocular images, current fully supervised methods requires large amounts 3D annotated images which are captured in indoor settings using sophisticated motion capture setups. Hence, these methods do not generalise well to in-the-wild settings. To this end, we propose a semi-supervised approach which can utilise multi-view images captured in the wild without requiring 3D annotations. In our approach, we jointly learn i) an embedding capturing 3D human pose from multi-view images using metric learning and ii) to estimate 3D joint locations from our embedding using little amount of 3D supervision.</p>
-                <p>To have a complete representation of a human subject digitally, a fully textured mesh model is essential. In this regard, we present a unsupervised framework that estimates textures of the human subject given a single RGB image and an estimated mesh. We enhance the efficacy of an existing framework that learn to generate textures by ensuring consistency between textures obtained from multiple images of the same subject during training. We achieve this by hierarchically refining the mesh such that its projection has a higher overlap with the human subject enabling higher consistency between textures.</p>
-                <p>We perform extensive experiments for all proposed methods on publicly available benchmark datasets and outperform corresponding competing methods.</p>
-              </div>
+  
+  <body>
+    
+    <header class="w3-container">
+      <h1 class="w3-container w3-indigo title">3D Modelling From Images using Semi Supervised Learning</h1>
+      <div class="nav-bar">
+        <div class="w3-bar w3-white">
+          <a href="#abstract" id="0" onclick=reply_click(this.id) class="w3-bar-item">Abstract</a>
+          <div class="w3-dropdown-hover">
+            <button class="w3-button">Thesis In a Nutshell</button>
+            <div class="w3-dropdown-content w3-bar-block w3-card-4">
+              <a href="#overview" id="1" onclick=reply_click(this.id) class="w3-bar-item w3-button">Overview</a>
+              <a href="#localfeatures1" id="2" onclick=reply_click(this.id) class="w3-bar-item w3-button">PhotoSynth Dataset</a>
+              <a href="#localfeatures2" id="3" onclick=reply_click(this.id) class="w3-bar-item w3-button">Scale Invariant Local Features</a>
+              <a href="#semisuppose" id="4" onclick=reply_click(this.id) class="w3-bar-item w3-button">Semi Supervised Human Pose Estimation</a>
+              <a href="#unsuptex" id="5" onclick=reply_click(this.id) class="w3-bar-item w3-button">Unsupervised Human Texture Synthesis</a>
             </div>
-          </section>
+          </div>
+          <a href="#publications" id="6" onclick=reply_click(this.id) class="w3-bar-item">Publications</a>
         </div>
-        <div class="mdl-layout__tab-panel" id="overview">
-          <section class="section--center mdl-grid mdl-grid--no-spacing">
-            <div class="mdl-cell mdl-cell--12-col">
-              <p style="text-align: justify;">Perceiving the world in 3D is essential for an autonomous robot for carrying out several tasks such as navigating, interacting with other people or objects, analysing structures and so on. Humans are excellent in estimating relative depth and 3D structure of contents in a scene through evolution. Achieving similar levels of accuracy through machines forms a fundamental problem in computer vision and is actively pursued in the community. A large variety of ongoing techniques for 3D reconstruction exist in the literature specific to different applications. For instance, the method of Structure-From-Motion (SFM), Simultaneous Localization And Mapping (SLAM) are used for reconstructing an entire environment while dedicated methods exploiting human structure exist for modelling people in 3D from images and videos. In my thesis, I have focused on mitigating some of the issues faced by current method solving SFM and monocular 3D Human modelling.</p>
-              <h3 style="text-align: center;">Contributions</h3>
-              <p style="text-align: center;"><img src="images/Visual Contribution Map.jpg"></p>
-              <h6 style="text-align: center;">Visual Map of my contributions</h6>
+      </div> 
+    </header>
 
-              <br><br>
-              <p style="text-align: justify;">I address the problem of exploiting massive unlabelled in-the-wild datasets for different learning frameworks pertaining to improve performance of 3D modelling of scenes and humans. My contributions span several aspects of learning from data,</p>
-              
-              <ul style="text-align: justify;">
-                <li>Create a dataset consisting of images of real world scenes. Automatically process the images to create training data with labels for the task at hand. These labels does not require manual interventions but uses off-the-shelf techniques along with other specific constraints. The generated labels at times can be noisy and suffer slight deviations from the ground truth. The large volume of datasets ensures the effect of such noisy labels are negligible.</li>
-                <li>Design novel deep learning architecture to account for wide variations while learning specific tasks from real `in-the-wild' datasets.</li>
-                <li>Adopt semi-supervised approaches where the model is jointly trained on large amounts in-the-wild unlabelled data and much smaller set of labelled data. The labelled data is required to supervise the model for task specific outputs(eg. predicting 3D body joint locations) while weak supervision/constraints are used learn from the unlabelled data. The quantity and in-the-wild variations in the unlabelled data enables the model to learn robust intermediate feature maps that can be applied in real world scenarios.</li>
-                <li>Adopt un-supervised approaches where only weak constraints are used for learning. In this setting no annotations are required and are used in problems which even small amounts of ground truth labels are not available.</li>
-              </ul>
-
-              <br>
-              <h3 style="text-align: center;">Applications</h3>
-              <br>
-              <h4 style="text-align: left;">SFM Applications</h4>
-              <p style="text-align: center;"><img style="width: 90%" src="images/SFM Applications.jpg"></p>
-              <h6 style="text-align: justify;"><b>Photo Tourism</b>[1]: 3D modelling of popular sites and landscapes from large collection of photos from the internet. <b>Augmented Reality</b>[2]: Annotate images based on 3D structure. <b>Structural Geology</b>[3]: Images from Unmanned Aerial Vehicles (UAV) are used to reconstruct 3D surface for high fidelity surveys of trenches and rock exposures.</h6>
-              
-              <br>
-              
-              <h4 style="text-align: left;">Human Modelling Applications</h4>
-              <p style="text-align: center;"><img style="width: 90%" src="images/Human Pose Applications.jpg"></p>
-              <h6 style="text-align: justify;"><b>Markerless Motion Capture</b>[4]: Capture human motions in free environments without markers, widely used for film making. <b>Digital Avatar</b>>[5]: Creating an animatable object representing the subject from a single RGB image. <b>Interactive Applications</b>[6]: Creating applications which can be used by body movements, e.g. Interactive Art.</h6>
-                         
-              <br>
-         
-            </div>
-          </section>
+    <div class="w3-container w3-center layout-content">
+      <div class="w3-container panel is-active" id="abstract">
+        <div class="w3-container sub-heading">
+          <h1>Abstract</h1>
         </div>
-        <div class="mdl-layout__tab-panel" id="localfeatures1">
-          <section class="section--center mdl-grid mdl-grid--no-spacing">
-            <div class="mdl-cell mdl-cell--12-col">
-              <p style="text-align: justify;">To enhance the performance of CNN based descriptors, we introduce a novel dataset that overcomes many of the drawbacks of existing datasets used of training descriptors. We begin with collecting data from publicly available large collection of images from the internet which are taken in-the-wild and exhibit wide variations in content, viewpoints, scale and illumination. We use Microsoft PhotoSynth for this purpose. We collected 30 scenes with each scene comprising of a collection of around 250 images appx. Sample images from different are shown below,</p>
-              <p style="text-align: center;"><img style="width: 90%" src="images/PS_Dataset_Images.jpg"></p>
-              <h6 style="text-align: center;">Sample pairs of images from our proposed dataset showing viewpoint, scale and illumination variations</h6>
-
-              <br>
-              <p style="text-align: justify;">Next, we propose an automated way to process these image collections to generate pairs of ‘positive’ (similar) and ‘negative’ (dissimilar) patches that can be used to learn descriptors from patches through metric learning shown below,</p>
-              <p style="text-align: center;"><img style="width: 90%" src="images/PS_Dataset_patches.jpg"></p>
-              <h6 style="text-align: center;">Patches extracted by our algorithm centered around keypoints shown in green dots representing a unique 3D point in the scene.</h6>
-
-              <br>
-
-              <p style="text-align: justify;">We exploit the Structure From Motion process and its outputs to generate the desired data. Specifically, we perform SFM on each of the image collections using SIFT descriptors for point correspondences. The SFM process outputs i) reconstructed 3D points ii) set of corresponding 2D locations from images corresponding to each 3D point, ii) estimated intrinsic and extrinsic parameters. The transitivity relationship between point correspondences(i.e.a correspondence between pair of images (A, B) and (B,C) ensures correspondence between pairs (A, C)).
-              This enables the SFM process to match corresponding points between pair (A, C) which would been otherwise unlikely to obtain when matched directly using SIFT descriptors. The set of corresponding 2D locations given a 3D point may contain images that are taken from very similar viewpoints and scale. We propose a novel algorithm to prune out these near duplicate entries from the set using estimated intrinsic and extrinsic camera parameters. Our pruning algorithm is also be used to customise the amount of variability between corresponding pairs in terms viewpoints and scale for different tasks.
-              State-of-the-art descriptor learning frameworks trained on our proposed dataset outperform significantly those that are trained existing datasets on matching point correspondences.</p>
-            </div>
-          </section>
+        <div class="w3-container sub-content">
+          <p>
+            Modelling the world in 3D has been a long standing problem in computer vision. A large variety of techniques exits for 3D modelling from a single image or a collection of images specific to different applications. Among them two widely used techniques are i) Structure-From-Motion (SFM) which reconstructs 3D point clouds of an environment from a collection of images, ii) modelling of a human subject in 3D from a single RGB image. In my thesis I have focused on mitigating some of current issues faced by these methods. I have proposed semi-supervised deep learning techniques which can utilise large volumes of un-annotated in-the-wild datasets to improve accuracy of existing 3D modelling techniques.
+            <br>
+            Finding point correspondences between images using local patch descriptors like SIFT is an essential step in reconstructing 3D using SFM. Currently CNN based descriptor models hold state-of-the-art performance in finding point correspondences. To further improve their the accuracy, we provide a framework to automatically generate pairs of similar and dissimilar patches from a large in-the-wild dataset(PS-Dataset) of image collections exhibiting wide variations in viewpoint and illumination.
+            <br>
+            The robustness of a descriptor to scale is largely attributed to normalising patches in terms of scale before computing its descriptors. However, in certain applications like dense matching of pixels between two images normalising patches is infeasible due to unavailability of scale information at every pixel. Hence, I propose a multi-resolution architecture CNN model to compute scale invariant descriptors without requiring any normalisation. We perform correspondence matching and 3D reconstruction on benchmark datasets using such non-normalized patches to demonstrate its efficacy.
+            <br>
+            In modelling humans from monocular images, current fully supervised methods requires large amounts 3D annotated images which are captured in indoor settings using sophisticated motion capture setups. Hence, these methods do not generalise well to in-the-wild settings. To this end, we propose a semi-supervised approach which can utilise multi-view images captured in the wild without requiring 3D annotations. In our approach, we jointly learn i) an embedding capturing 3D human pose from multi-view images using metric learning and ii) to estimate 3D joint locations from our embedding using little amount of 3D supervision.
+            <br>
+            To have a complete representation of a human subject digitally, a fully textured mesh model is essential. In this regard, we present a unsupervised framework that estimates textures of the human subject given a single RGB image and an estimated mesh. We enhance the efficacy of an existing framework that learn to generate textures by ensuring consistency between textures obtained from multiple images of the same subject during training. We achieve this by hierarchically refining the mesh such that its projection has a higher overlap with the human subject enabling higher consistency between textures.
+            <br>
+            We perform extensive experiments for all proposed methods on publicly available benchmark datasets and outperform corresponding competing methods.
+          </p>
         </div>
-        <div class="mdl-layout__tab-panel" id="localfeatures2">
-          <section class="section--center mdl-grid mdl-grid--no-spacing">
-            <div class="mdl-cell mdl-cell--12-col">
-              <p style="text-align: justify;">
-                The CNN based descriptor models mentioned previously operates on patches which are normalised in
-                terms of scale and rotation. As a consequence, the normalized patch ensures the descriptor computed are
-                in turn invariant to scale and rotation. The normalisation requires 'scale' and 'dominant orientation' values
-                which are evaluated by the keypoint detector and provided along with the location for each detected point.
-                However, in certain applications like densely matching
-                every pixel(not just keypoints) lying in the shared region between two images, the 'scale' and 'orientation'
-                values are not available. To improve matching accuracy in such scenarios, we propose a multi-resolution
-                CNN architecture to encode descriptors without requiring normalisation yet achieving invariance to scale.
-                In this architecture, the network takes in patches cropped at 3 different resolutions centered around the
-                same point and extracts feature maps using the same feature extractor, concatenates the features and finally
-                encodes them into the output descriptor. Using features from patches cropped at different resolution helps in
-                capturing information at different scales. Our proposed architecture trained on our novel dataset using metric
-                learning outperforms competing methods when input patches are not normalized. We also demonstrate the
-                superior SFM based 3D reconstruction on benchmark <b>Strecha</b> dataset when point correspondences are
-                obtained using descriptors computed by our model on non-normalised patches in the following figure.
-              </p>
-              <p style="text-align: center;"><img style="width: 90%" src="images/reconstruction-teaser.jpg"></p>
-              <h6 style="text-align: justify;">
-                Comparing reconstruction obtained from SFM on the 'fountain' scene of Strecha dataset
-                with different descriptors: SIFT, DeepDesc, Tfeat. DeepDesc and Tfeat are CNN based descriptors trained an existing dataset for descriptor learning. Our multi-resolution model trained on our
-                proposed dataset obtains more no of point correspondences which leads to denser reconstructions indicated by a higher number of reconstructed points.
-              </h6>
-            </div>
-          </section>
-        </div>
-        <div class="mdl-layout__tab-panel" id="semisuppose">
-          <section class="section--center mdl-grid mdl-grid--no-spacing">
-            <div class="mdl-cell mdl-cell--12-col">
-              <p style="text-align: justify">
-                We propose a semi-supervised approach which can jointly train a model on large unlabelled images of human motion along with a small set of 3D labelled images to estimate 3D body joint location from
-                monocular RGB images. In our approach, we apply state-of-the art metric learning framework [10] used
-                for learning patch descriptors on time-synchronized multi-view images to learn an embedding of images
-                capturing implicit 3D structure without requiring labels. Time-synchronized multi-view images implies,
-                image sets capturing poses from several viewpoints at every time instant from a video sequence of human
-                motion. In our setting, 'anchor-positive' pair consist of images taken at the same time instant but from
-                different viewpoints while a 'anchor-negative' pair has images taken at different time instants. Choosing the
-                'anchor, positive, negative' in such a way ensures discrimination between 'positive' and 'negative' is done
-                on the basis of pose alone. To eliminate the possibility of the model discriminating a 'negative' based on
-                subject appearance instead of pose we ensure the 'negative' belong to the same subject as that of the 'anchor'.
-                Since the 'anchor' and 'positive' are images belonging to different viewpoints, our learned embedding are
-                invariant to viewpoints. Metric learning ensures that in the learnt embedding space, euclidean distance is
-                proportional to similarity in the 3D pose as shown below,
-              </p>  
-              <br>
-              <p style="text-align: center;"><img style="width: 75%" src="images/embedding-teaser.jpg"></p>
-              <h6 style="text-align: justify;">Distance between images with the same pose taken from different views (marked 'anchorpositive') and images having different pose(marked 'anchor-negative') in the embedding space learned by
-                our model. Similar poses have a much smaller distance compared to dissimilar ones.
-              </h6>
-              
-              <br>
+      </div>
 
-              <p style="text-align: justify;">To estimate specific 3D joint locations from our embedding, a shallow network is trained using 3D supervision from annotations is trained on a small set of images. Typically the annotations of the body joints are
-                available in the local camera coordinate system which differ between viewpoints. Estimating joint locations
-                in the local camera co-ordinate system from our view invariant pose embedding hence becomes one-many
-                mapping which makes learning infeasible. To this end, we construct a new canonical representation of the
-                human pose which is rotation invariant and estimate joint locations in this novel representation.
-              </p>
-              
-              <p style="text-align: justify;">
-                In our experiments, we follow previous works in mimicking the scenario of leveraging large no. of
-                unlabelled images with a small fraction of labelled images on the Human3.6M dataset. We split the dataset
-                into labelled and unlabelled parts and progressively reduce the set of labelled images. We demonstrate that
-                the accuracy of our proposed learning framework degrades to a much smaller extent compared to other
-                approaches when 3D supervision is extremely limited.    
-              </p>
-           
-            </div>
-          </section>
+      <div class="w3-container panel" id="overview">
+        <div class="w3-container sub-heading">
+          <h1>Overview</h1>
         </div>
-        <div class="mdl-layout__tab-panel" id="unsuptex">
-          <section class="section--center mdl-grid mdl-grid--no-spacing">
-            <div class="mdl-cell mdl-cell--12-col">
-              <h4>Coming Soon</h4>
-            </div>
-          </section>
-        </div>
-        <div class="mdl-layout__tab-panel" id="publications">
-          <section class="section--center mdl-grid mdl-grid--no-spacing" style="max-width: 960px;">
-            <div class="mdl-cell mdl-cell--12-col">
-            <ul style="text-align: justify;">
-              <li>
-                <strong>R. Mitra</strong>, J. Zhang, S. Narayan, S. Ahmed, S. Chandran, A. Jain, <b>Improved Descriptors for Patch Matching and Reconstruction</b>, in proceedings of ICCV Workshop on Compact and Efficient Feature Representation and Learning (CEFRL) (<b>ICCV Workshop 2017</b>), Venice, October 2017. <a href="https://arxiv.org/abs/1701.06854">Link</a>
-              </li>
-              <li>
-                <strong>R. Mitra</strong>, N. Doiphode, U. Gautam, S. Narayan, S. Ahmed, S. Chandran, A. Jain, <b>A Large Dataset for Improving Patch Matching</b>, in (arXiv e-prints 2017). <a href="\href{https://github.com/rmitra/PS-Dataset">Project Page</a>
-              </li>
-              <li>
-                N. Doiphode, <strong>R. Mitra</strong>, S. Ahmed, A. Jain, <b>An Improved Learning Framework for Covariant Local Feature Detection</b> in proceedings of Asian Conference on Computer Vision (<b>ACCV 2018</b>), Perth, December 2018. <a href="https://arxiv.org/pdf/1811.00438.pdf">Link</a>
-              </li>
-              <li>
-                N. B. Gundavarapu, D. Srivastava, <strong>R. Mitra</strong>, A. Sharma, A. Jain, <b>Structured Aleatoric Uncertainty in Human Pose Estimation</b> in proceedings of CVPR Workshop on Uncertainty and Robustness in Deep Visual Learning (<b>CVPR Workshop 2019</b>), Long Beach, June 2019. <a href="https://openaccess.thecvf.com/content_CVPRW_2019/html/Uncertainty_and_Robustness_in_Deep_Visual_Learning/Gundavarapu_Structured_Aleatoric_Uncertainty_in_Human_Pose_Estimation_CVPRW_2019_paper.html">Link</a>
-              </li>
-              <li>
-                R. Dabral, N. B. Gundavarapu, <strong>R. Mitra</strong>, A. Sharma, G. Ramakrishnan, A. Jain, <b>Multi-Person 3D Human Pose Estimation from Monocular Images</b> in proceedings of International Conference on 3D Vision (<b>3DV 2019</b>), Québec City, September 2019. <a href="https://arxiv.org/abs/1909.10854">Link</a>
-              </li>
-              <li>
-                <strong>R. Mitra</strong>, N. B. Gundavarapu, A. Sharma, A. Jain, <b>Multiview-Consistent Semi-Supervised Learning for 3D Human Pose Estimation</b> in proceedings of Conference on Computer Vision and Pattern Recognition (<b>CVPR 2020</b>), Seattle, June 2020. <a href="https://openaccess.thecvf.com/content_CVPR_2020/papers/Mitra_Multiview-Consistent_Semi-Supervised_Learning_for_3D_Human_Pose_Estimation_CVPR_2020_paper.pdf">Link</a>
-              </li>
-            </ul>
+        <div class="w3-container sub-content">
+          <p>Perceiving the world in 3D is essential for an autonomous robot for carrying out several tasks such as navigating, interacting with other people or objects, analysing structures and so on. Humans are excellent in estimating relative depth and 3D structure of contents in a scene through evolution. Achieving similar levels of accuracy through machines forms a fundamental problem in computer vision and is actively pursued in the community. A large variety of ongoing techniques for 3D reconstruction exist in the literature specific to different applications. For instance, the method of Structure-From-Motion (SFM), Simultaneous Localization And Mapping (SLAM) are used for reconstructing an entire environment while dedicated methods exploiting human structure exist for modelling people in 3D from images and videos. In my thesis, I have focused on mitigating some of the issues faced by current method solving SFM and monocular 3D Human modelling.</p>
+          <br>
+          <h2 class="w3-center">Contributions</h3>
+          <div class="w3-center">
+            <img src="images/Visual Contribution Map.jpg">
+            <h4>Visual Map of my contributions</h4>
+          </div>
+          
+          <br><br>
+          
+          <p>I address the problem of exploiting massive unlabelled in-the-wild datasets for different learning frameworks pertaining to improve performance of 3D modelling of scenes and humans. My contributions span several aspects of learning from data,</p>
+          
+          <ul>
+            <li>Create a dataset consisting of images of real world scenes. Automatically process the images to create training data with labels for the task at hand. These labels does not require manual interventions but uses off-the-shelf techniques along with other specific constraints. The generated labels at times can be noisy and suffer slight deviations from the ground truth. The large volume of datasets ensures the effect of such noisy labels are negligible.</li>
+            <li>Design novel deep learning architecture to account for wide variations while learning specific tasks from real `in-the-wild' datasets.</li>
+            <li>Adopt semi-supervised approaches where the model is jointly trained on large amounts in-the-wild unlabelled data and much smaller set of labelled data. The labelled data is required to supervise the model for task specific outputs(eg. predicting 3D body joint locations) while weak supervision/constraints are used learn from the unlabelled data. The quantity and in-the-wild variations in the unlabelled data enables the model to learn robust intermediate feature maps that can be applied in real world scenarios.</li>
+            <li>Adopt un-supervised approaches where only weak constraints are used for learning. In this setting no annotations are required and are used in problems which even small amounts of ground truth labels are not available.</li>
+          </ul>
 
-            </div>
-          </section>
+          <br>
+          <h2 class="w3-center">Applications</h3>
+          <br>
+          <h3 class="w3-left">SFM Applications</h4>
+          <p class="w3-center"><img style="width: 90%" src="images/SFM Applications.jpg"></p>
+          <h4 class="w3-center"><b>Photo Tourism</b>[1]: 3D modelling of popular sites and landscapes from large collection of photos from the internet. <b>Augmented Reality</b>[2]: Annotate images based on 3D structure. <b>Structural Geology</b>[3]: Images from Unmanned Aerial Vehicles (UAV) are used to reconstruct 3D surface for high fidelity surveys of trenches and rock exposures.</h4>
+          
+          <br>
+          
+          <h3 class="w3-left">Human Modelling Applications</h4>
+          <p class="w3-center"><img style="width: 90%" src="images/Human Pose Applications.jpg"></p>
+          <h4 class="w3-center"><b>Markerless Motion Capture</b>[4]: Capture human motions in free environments without markers, widely used for film making. <b>Digital Avatar</b>>[5]: Creating an animatable object representing the subject from a single RGB image. <b>Interactive Applications</b>[6]: Creating applications which can be used by body movements, e.g. Interactive Art.</h4>
         </div>
-        <footer class="mdl-mega-footer">
-        </footer>
-      </main>
+      </div>
+
+      <div class="w3-container panel" id="localfeatures1">
+        <div class="w3-container sub-heading">
+          <h1>PhotoSynth Dataset</h1>
+        </div>
+        <div class="w3-container sub-content">
+          <p>To enhance the performance of CNN based descriptors, we introduce a novel dataset that overcomes many of the drawbacks of existing datasets used of training descriptors. We begin with collecting data from publicly available large collection of images from the internet which are taken in-the-wild and exhibit wide variations in content, viewpoints, scale and illumination. We use Microsoft PhotoSynth for this purpose. We collected 30 scenes with each scene comprising of a collection of around 250 images appx. Sample images from different are shown below,</p>
+          <br>
+          <p class="w3-center"><img style="width: 90%" src="images/PS_Dataset_Images.jpg"></p>
+          <h4 class="w3-center">Sample pairs of images from our proposed dataset showing viewpoint, scale and illumination variations</h4>
+
+          <br>
+          <p>Next, we propose an automated way to process these image collections to generate pairs of ‘positive’ (similar) and ‘negative’ (dissimilar) patches that can be used to learn descriptors from patches through metric learning shown below,</p>
+          <br>
+          <p class="w3-center"><img style="width: 90%" src="images/PS_Dataset_patches.jpg"></p>
+          <h4 class="w3-center">Patches extracted by our algorithm centered around keypoints shown in green dots representing a unique 3D point in the scene.</h4>
+
+          <br>
+
+          <p">We exploit the Structure From Motion process and its outputs to generate the desired data. Specifically, we perform SFM on each of the image collections using SIFT descriptors for point correspondences. The SFM process outputs i) reconstructed 3D points ii) set of corresponding 2D locations from images corresponding to each 3D point, ii) estimated intrinsic and extrinsic parameters. The transitivity relationship between point correspondences(i.e.a correspondence between pair of images (A, B) and (B,C) ensures correspondence between pairs (A, C)).
+          This enables the SFM process to match corresponding points between pair (A, C) which would been otherwise unlikely to obtain when matched directly using SIFT descriptors. The set of corresponding 2D locations given a 3D point may contain images that are taken from very similar viewpoints and scale. We propose a novel algorithm to prune out these near duplicate entries from the set using estimated intrinsic and extrinsic camera parameters. Our pruning algorithm is also be used to customise the amount of variability between corresponding pairs in terms viewpoints and scale for different tasks.
+          State-of-the-art descriptor learning frameworks trained on our proposed dataset outperform significantly those that are trained existing datasets on matching point correspondences.</p>
+
+        </div>
+      </div>
+
+      <div class="w3-container panel" id="localfeatures2">
+        <div class="w3-container sub-heading">
+          <h1>Scale Invariant Local Features</h1>
+        </div>
+        <div class="w3-container sub-content">
+          <p>
+            The CNN based descriptor models mentioned previously operates on patches which are normalised in
+            terms of scale and rotation. As a consequence, the normalized patch ensures the descriptor computed are
+            in turn invariant to scale and rotation. The normalisation requires 'scale' and 'dominant orientation' values
+            which are evaluated by the keypoint detector and provided along with the location for each detected point.
+            However, in certain applications like densely matching
+            every pixel(not just keypoints) lying in the shared region between two images, the 'scale' and 'orientation'
+            values are not available. To improve matching accuracy in such scenarios, we propose a multi-resolution
+            CNN architecture to encode descriptors without requiring normalisation yet achieving invariance to scale.
+            In this architecture, the network takes in patches cropped at 3 different resolutions centered around the
+            same point and extracts feature maps using the same feature extractor, concatenates the features and finally
+            encodes them into the output descriptor. Using features from patches cropped at different resolution helps in
+            capturing information at different scales. Our proposed architecture trained on our novel dataset using metric
+            learning outperforms competing methods when input patches are not normalized. We also demonstrate the
+            superior SFM based 3D reconstruction on benchmark <b>Strecha</b> dataset when point correspondences are
+            obtained using descriptors computed by our model on non-normalised patches in the following figure.
+          </p>
+          <br>
+          <p class="w3-center"><img style="width: 90%" src="images/reconstruction-teaser.jpg"></p>
+          <h4 class="w3-center">Comparing reconstruction obtained from SFM on the 'fountain' scene of Strecha dataset
+            with different descriptors: SIFT, DeepDesc, Tfeat. DeepDesc and Tfeat are CNN based descriptors trained an existing dataset for descriptor learning. Our multi-resolution model trained on our
+            proposed dataset obtains more no of point correspondences which leads to denser reconstructions indicated by a higher number of reconstructed points.
+          </h4>
+        
+        </div>
+      
+      </div>
+
+      <div class="w3-container panel" id="semisuppose">
+        <div class="w3-container sub-heading">
+          <h1>Semi Supervised Human Pose Estimation</h1>
+        </div>
+        <div class="w3-container sub-content">
+          <p>
+            We propose a semi-supervised approach which can jointly train a model on large unlabelled images of human motion along with a small set of 3D labelled images to estimate 3D body joint location from
+            monocular RGB images. In our approach, we apply state-of-the art metric learning framework [10] used
+            for learning patch descriptors on time-synchronized multi-view images to learn an embedding of images
+            capturing implicit 3D structure without requiring labels. Time-synchronized multi-view images implies,
+            image sets capturing poses from several viewpoints at every time instant from a video sequence of human
+            motion. In our setting, 'anchor-positive' pair consist of images taken at the same time instant but from
+            different viewpoints while a 'anchor-negative' pair has images taken at different time instants. Choosing the
+            'anchor, positive, negative' in such a way ensures discrimination between 'positive' and 'negative' is done
+            on the basis of pose alone. To eliminate the possibility of the model discriminating a 'negative' based on
+            subject appearance instead of pose we ensure the 'negative' belong to the same subject as that of the 'anchor'.
+            Since the 'anchor' and 'positive' are images belonging to different viewpoints, our learned embedding are
+            invariant to viewpoints. Metric learning ensures that in the learnt embedding space, euclidean distance is
+            proportional to similarity in the 3D pose as shown below,
+          </p>
+
+          <br>
+
+          <p class="w3-center"><img style="width: 75%" src="images/embedding-teaser.jpg"></p>
+          <h4 class="w3-center">Distance between images with the same pose taken from different views (marked 'anchorpositive') and images having different pose(marked 'anchor-negative') in the embedding space learned by
+            our model. Similar poses have a much smaller distance compared to dissimilar ones.
+          </h4>
+
+          <br>
+
+          <p>
+              To estimate specific 3D joint locations from our embedding, a shallow network is trained using 3D supervision from annotations is trained on a small set of images. Typically the annotations of the body joints are
+              available in the local camera coordinate system which differ between viewpoints. Estimating joint locations
+              in the local camera co-ordinate system from our view invariant pose embedding hence becomes one-many
+              mapping which makes learning infeasible. To this end, we construct a new canonical representation of the
+              human pose which is rotation invariant and estimate joint locations in this novel representation.
+          </p>
+
+          <p>
+            In our experiments, we follow previous works in mimicking the scenario of leveraging large no. of
+            unlabelled images with a small fraction of labelled images on the Human3.6M dataset. We split the dataset
+            into labelled and unlabelled parts and progressively reduce the set of labelled images. We demonstrate that
+            the accuracy of our proposed learning framework degrades to a much smaller extent compared to other
+            approaches when 3D supervision is extremely limited.
+          </p>
+        
+        </div>
+
+      </div>  
+
+      <div class="w3-container panel" id="unsuptex">
+        <div class="w3-container sub-heading">
+          <h1>Unsupervised Human Texture Synthesis</h1>
+        </div>
+        <div class="w3-container sub-content">
+          <h1 class="w3-center">Coming Soon</h1>
+        </div>
+      </div>
+   
+      <div class="w3-container panel" id="publications">
+        <div class="w3-container sub-heading">
+          <h1>List of Publications</h1>
+        </div>
+        <div class="w3-container sub-content">
+          <ul class="publication" style="text-align: justify;">
+            <li>
+              <strong>R. Mitra</strong>, J. Zhang, S. Narayan, S. Ahmed, S. Chandran, A. Jain, <b>Improved Descriptors for Patch Matching and Reconstruction</b>, in proceedings of ICCV Workshop on Compact and Efficient Feature Representation and Learning (CEFRL) (<b>ICCV Workshop 2017</b>), Venice, October 2017. <a href="https://arxiv.org/abs/1701.06854">Link</a>
+            </li>
+            <li>
+              <strong>R. Mitra</strong>, N. Doiphode, U. Gautam, S. Narayan, S. Ahmed, S. Chandran, A. Jain, <b>A Large Dataset for Improving Patch Matching</b>, in (arXiv e-prints 2017). <a href="\href{https://github.com/rmitra/PS-Dataset">Project Page</a>
+            </li>
+            <li>
+              N. Doiphode, <strong>R. Mitra</strong>, S. Ahmed, A. Jain, <b>An Improved Learning Framework for Covariant Local Feature Detection</b> in proceedings of Asian Conference on Computer Vision (<b>ACCV 2018</b>), Perth, December 2018. <a href="https://arxiv.org/pdf/1811.00438.pdf">Link</a>
+            </li>
+            <li>
+              N. B. Gundavarapu, D. Srivastava, <strong>R. Mitra</strong>, A. Sharma, A. Jain, <b>Structured Aleatoric Uncertainty in Human Pose Estimation</b> in proceedings of CVPR Workshop on Uncertainty and Robustness in Deep Visual Learning (<b>CVPR Workshop 2019</b>), Long Beach, June 2019. <a href="https://openaccess.thecvf.com/content_CVPRW_2019/html/Uncertainty_and_Robustness_in_Deep_Visual_Learning/Gundavarapu_Structured_Aleatoric_Uncertainty_in_Human_Pose_Estimation_CVPRW_2019_paper.html">Link</a>
+            </li>
+            <li>
+              R. Dabral, N. B. Gundavarapu, <strong>R. Mitra</strong>, A. Sharma, G. Ramakrishnan, A. Jain, <b>Multi-Person 3D Human Pose Estimation from Monocular Images</b> in proceedings of International Conference on 3D Vision (<b>3DV 2019</b>), Québec City, September 2019. <a href="https://arxiv.org/abs/1909.10854">Link</a>
+            </li>
+            <li>
+              <strong>R. Mitra</strong>, N. B. Gundavarapu, A. Sharma, A. Jain, <b>Multiview-Consistent Semi-Supervised Learning for 3D Human Pose Estimation</b> in proceedings of Conference on Computer Vision and Pattern Recognition (<b>CVPR 2020</b>), Seattle, June 2020. <a href="https://openaccess.thecvf.com/content_CVPR_2020/papers/Mitra_Multiview-Consistent_Semi-Supervised_Learning_for_3D_Human_Pose_Estimation_CVPR_2020_paper.pdf">Link</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
     </div>
-    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    
+    <footer class="w3-container"></footer>
+    
+    <script>
+      var link_panel_dict = {"0": "abstract", "1": "overview", "2": "localfeatures1", "3": "localfeatures2", "4": "semisuppose", "5": "unsuptex", "6": "publications"}
+      var panels = document.getElementsByClassName("panel")
+      
+      function reply_click(clicked_id) {
+        for (let i = 0; i < panels.length; i++) {
+          panels[i].classList.remove("is-active");
+        }        
+      
+        var act_panel = document.getElementById(link_panel_dict[clicked_id])
+        act_panel.classList.add("is-active")
+      }
+    
+    </script>
+  
   </body>
+
 </html>
