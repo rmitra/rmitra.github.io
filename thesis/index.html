@@ -53,18 +53,18 @@
       <h1 class="w3-container w3-indigo title">3D Modelling From Images using Semi Supervised Learning</h1>
       <div class="nav-bar">
         <div class="w3-bar w3-white">
-          <a href="#abstract" id="0" onclick=reply_click(this.id) class="w3-bar-item">Abstract</a>
+          <a href="#" id="0" onclick=reply_click(this.id) class="w3-bar-item">Abstract</a>
           <div class="w3-dropdown-hover">
             <button class="w3-button">Thesis In a Nutshell</button>
             <div class="w3-dropdown-content w3-bar-block w3-card-4">
-              <a href="#overview" id="1" onclick=reply_click(this.id) class="w3-bar-item w3-button">Overview</a>
-              <a href="#localfeatures1" id="2" onclick=reply_click(this.id) class="w3-bar-item w3-button">PhotoSynth Dataset</a>
-              <a href="#localfeatures2" id="3" onclick=reply_click(this.id) class="w3-bar-item w3-button">Scale Invariant Local Features</a>
-              <a href="#semisuppose" id="4" onclick=reply_click(this.id) class="w3-bar-item w3-button">Semi Supervised Human Pose Estimation</a>
-              <a href="#unsuptex" id="5" onclick=reply_click(this.id) class="w3-bar-item w3-button">Unsupervised Human Texture Synthesis</a>
+              <a href="#" id="1" onclick=reply_click(this.id) class="w3-bar-item w3-button">Overview</a>
+              <a href="#" id="2" onclick=reply_click(this.id) class="w3-bar-item w3-button">PhotoSynth Dataset</a>
+              <a href="#" id="3" onclick=reply_click(this.id) class="w3-bar-item w3-button">Scale Invariant Local Features</a>
+              <a href="#" id="4" onclick=reply_click(this.id) class="w3-bar-item w3-button">Semi Supervised Human Pose Estimation</a>
+              <a href="#" id="5" onclick=reply_click(this.id) class="w3-bar-item w3-button">Unsupervised Human Texture Synthesis</a>
             </div>
           </div>
-          <a href="#publications" id="6" onclick=reply_click(this.id) class="w3-bar-item">Publications</a>
+          <a href="#" id="6" onclick=reply_click(this.id) class="w3-bar-item">Publications</a>
         </div>
       </div> 
     </header>
@@ -137,21 +137,29 @@
         <div class="w3-container sub-content">
           <p>To enhance the performance of CNN based descriptors, we introduce a novel dataset that overcomes many of the drawbacks of existing datasets used of training descriptors. We begin with collecting data from publicly available large collection of images from the internet which are taken in-the-wild and exhibit wide variations in content, viewpoints, scale and illumination. We use Microsoft PhotoSynth for this purpose. We collected 30 scenes with each scene comprising of a collection of around 250 images appx. Sample images from different are shown below,</p>
           <br>
-          <p class="w3-center"><img style="width: 90%" src="images/PS_Dataset_Images.jpg"></p>
+          <p class="w3-center"><img style="width: 75%" src="images/PS_Dataset_Images.jpg"></p>
           <h4 class="w3-center">Sample pairs of images from our proposed dataset showing viewpoint, scale and illumination variations</h4>
 
           <br>
           <p>Next, we propose an automated way to process these image collections to generate pairs of ‘positive’ (similar) and ‘negative’ (dissimilar) patches that can be used to learn descriptors from patches through metric learning shown below,</p>
           <br>
-          <p class="w3-center"><img style="width: 90%" src="images/PS_Dataset_patches.jpg"></p>
+          <p class="w3-center"><img style="width: 75%" src="images/PS_Dataset_patches.jpg"></p>
           <h4 class="w3-center">Patches extracted by our algorithm centered around keypoints shown in green dots representing a unique 3D point in the scene.</h4>
 
           <br>
 
-          <p">We exploit the Structure From Motion process and its outputs to generate the desired data. Specifically, we perform SFM on each of the image collections using SIFT descriptors for point correspondences. The SFM process outputs i) reconstructed 3D points ii) set of corresponding 2D locations from images corresponding to each 3D point, ii) estimated intrinsic and extrinsic parameters. The transitivity relationship between point correspondences(i.e.a correspondence between pair of images (A, B) and (B,C) ensures correspondence between pairs (A, C)).
-          This enables the SFM process to match corresponding points between pair (A, C) which would been otherwise unlikely to obtain when matched directly using SIFT descriptors. The set of corresponding 2D locations given a 3D point may contain images that are taken from very similar viewpoints and scale. We propose a novel algorithm to prune out these near duplicate entries from the set using estimated intrinsic and extrinsic camera parameters. Our pruning algorithm is also be used to customise the amount of variability between corresponding pairs in terms viewpoints and scale for different tasks.
-          State-of-the-art descriptor learning frameworks trained on our proposed dataset outperform significantly those that are trained existing datasets on matching point correspondences.</p>
+          <p>
+            We exploit the Structure From Motion process and its outputs to generate the desired data. Specifically, we perform SFM on each of the image collections using SIFT descriptors for point correspondences. The SFM process outputs i) reconstructed 3D points ii) set of corresponding 2D locations from images corresponding to each 3D point, ii) estimated intrinsic and extrinsic parameters. The transitivity relationship between point correspondences(i.e.a correspondence between pair of images (A, B) and (B,C) ensures correspondence between pairs (A, C)).
+            This enables the SFM process to match corresponding points between pair (A, C) which would been otherwise unlikely to obtain when matched directly using SIFT descriptors. The set of corresponding 2D locations given a 3D point may contain images that are taken from very similar viewpoints and scale. We propose a novel algorithm to prune out these near duplicate entries from the set using estimated intrinsic and extrinsic camera parameters. Our pruning algorithm is also be used to customise the amount of variability between corresponding pairs in terms viewpoints and scale for different tasks.
+            State-of-the-art descriptor learning frameworks trained on our proposed dataset outperform significantly those that are trained existing datasets on matching point correspondences. In the image below, we show patches matched by our model against others on the 'Fountain P-11' scene from Strecha et al which provides images with wide baselines. One can observe that our model outperforms others in matching corresponding patches differing in large viewpoints
+          </p>
 
+          <br>
+          <p class="w3-center"><img style="width: 70%" src="images/compare_verywide.png"></p>
+          <h4 class="w3-center">Examples of incorrect matches made by Hardnet+ (Mishchuk et al. NeurIPS 2017) while matching very-wide
+            image pairs from scene Fountain-P11. The top row represent the patches from the source
+            image. The corresponding predictions are given in the same column. Incorrect and correct predictions
+            are shown in red and green respectively</h4>
         </div>
       </div>
 
@@ -211,7 +219,7 @@
 
           <br>
 
-          <p class="w3-center"><img style="width: 75%" src="images/embedding-teaser.jpg"></p>
+          <p class="w3-center"><img style="width: 65%" src="images/embedding-teaser.jpg"></p>
           <h4 class="w3-center">Distance between images with the same pose taken from different views (marked 'anchorpositive') and images having different pose(marked 'anchor-negative') in the embedding space learned by
             our model. Similar poses have a much smaller distance compared to dissimilar ones.
           </h4>
@@ -231,8 +239,23 @@
             unlabelled images with a small fraction of labelled images on the Human3.6M dataset. We split the dataset
             into labelled and unlabelled parts and progressively reduce the set of labelled images. We demonstrate that
             the accuracy of our proposed learning framework degrades to a much smaller extent compared to other
-            approaches when 3D supervision is extremely limited.
+            approaches when 3D supervision is extremely limited (shown in images below).
           </p>
+          <br>
+
+          <div class="w3-center">
+            <p><img style="width: 65%" src="images/N_Mpjpe_progress_weak.png"></p>
+            <h4> N-MPJPE 3D-pose supervision on test split of Human3.6M. Our proposed model outperforms the baseline and the current state-of-the-art Rhodin et al. ECCV 2018.</h4>
+          </div>
+
+          <br>
+
+          <div class="w3-center">
+            <p><img style="width: 75%" src="images/CanPoseOurVsBaseline.png"></p>
+            <h4>Qualitative results on canonical pose estimation by our proposed framework (MCSS) against
+              our Baseline on Human 3.6M test split. Both the models are trained with limited 3D supervision. Our method produces more accurate estimates for even for challenging poses like 'sitting'
+              and 'bending'.</h4>
+          </div>
         
         </div>
 
@@ -243,7 +266,27 @@
           <h1>Unsupervised Human Texture Synthesis</h1>
         </div>
         <div class="w3-container sub-content">
-          <h1 class="w3-center">Coming Soon</h1>
+          <P>
+            In certain applications, along with of pose estimation, recovering a mesh capturing the shape of the person with detailed textures are desired. Estimating textures from a single image of the subject taken in the wild (shown in the image below) increases the scope of applications drastically.
+          </P>
+          
+          <br>
+          
+          <p class="w3-center"><img style="width: 65%;" src="images/texture_modelling_demo.png"></p>
+          <h4 class="w3-center">Estimation of textured mesh capturing shape, pose and appearance from a single RGB image.</h4>
+        
+          <br>
+
+          <p>
+            Recently, unsupervised approaches have been proposed in Wang et al. CVPR 2019 and Zhao et al. NeurIPS 2020, learn to estimate textures from images of the subjects taken in the wild without requiring ground truth textures. These methods given an RGB image of the subject and a corresponding SMPL mesh, estimate a texture map corresponding to mesh. Comparing the input RGB image and a rendered image using the mesh and the estimated textures is used in learning. The SMPL meshes are obtained from an off-the-shelf predictor. The meshes being naked body models does not capture shape deformations due to clothing. Furthermore, errors in prediction results in incorrect representation of shape and pose. We demonstrate that refining the initial predicted shape and pose to capture clothing deformations improves the efficacy of the unsupervised methods.
+          </p>
+          <p>
+            We extend the unsupervised framework presented in Zhao et al. NeurIPS 2020 for generating full body textures from a single RGB image. We refine the initial predicted SMPL mesh to capture shape deformation due to clothing, ensuring a better match with the foreground human silhouette. We deform the meshes in an hierarchical fashion in 2 stages using the method proposed in Zhu et al. CVPR 2019. In the first stage 3D displacement vectors for joints are predicted such that after incorporating the displacements their projections align with of the corresponding actual 2D joint locations. In the next stage, we displacement vectors to uniformly sampled points on the mesh surface is predicted such that the projection of the displaced points lies on the human silhouette boundary. An additional re-identification based similarity loss along with the perceptual loss is also applied. We show that the re-identification loss helps in generating texture maps which are more consistent real world images specially in body part boundaries. Qualitative comparisons between images rendered using textures estimated by Zhou et al and our model (shown in image below) demostrates higher consistency of textures between the images rendered by our model and GT images specially in pheripheral regions of the human subjects.
+          </p>
+          <br>
+          <p class="w3-center"><img style="width: 75%;" src="images/hpbtt_vs_ours.png"></p>
+          <h4 class="w3-center">Qualitative comparisons with HPBTT (Zhou et al. NeurIPS 2020). Our method estimates more accurate textures in
+            regions around the silhouette boundary indicated in red boxes.</h4>
         </div>
       </div>
    
