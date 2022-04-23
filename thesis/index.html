@@ -60,7 +60,7 @@
               <a href="#" id="1" onclick=reply_click(this.id) class="w3-bar-item w3-button">Overview</a>
               <a href="#" id="2" onclick=reply_click(this.id) class="w3-bar-item w3-button">PhotoSynth Dataset</a>
               <a href="#" id="3" onclick=reply_click(this.id) class="w3-bar-item w3-button">Scale Invariant Local Features</a>
-              <a href="#" id="4" onclick=reply_click(this.id) class="w3-bar-item w3-button">Semi Supervised Human Pose Estimation</a>
+              <a href="#" id="4" onclick=reply_click(this.id) class="w3-bar-item w3-button">Semi-Supervised Human Pose Estimation</a>
               <a href="#" id="5" onclick=reply_click(this.id) class="w3-bar-item w3-button">Unsupervised Human Texture Synthesis</a>
             </div>
           </div>
@@ -139,7 +139,25 @@
           <h1>Overview</h1>
         </div>
         <div class="w3-container sub-content">
-          <p>Perceiving the world in 3D is essential for an autonomous robot for carrying out several tasks such as navigating, interacting with other people or objects, analysing structures and so on. Humans are excellent in estimating relative depth and 3D structure of contents in a scene through evolution. Achieving similar levels of accuracy through machines forms a fundamental problem in computer vision and is actively pursued in the community. A large variety of ongoing techniques for 3D reconstruction exist in the literature specific to different applications. For instance, the method of Structure-From-Motion (SFM), Simultaneous Localization And Mapping (SLAM) are used for reconstructing an entire environment while dedicated methods exploiting human structure exist for modelling people in 3D from images and videos. In my thesis, I have focused on mitigating some of the issues faced by current method solving SFM and monocular 3D Human modelling.</p>
+          <p>Perceiving the world in 3D is essential for an autonomous
+          robot for carrying out several tasks such as navigating,
+          interacting with other people or objects, analysing
+          structures and so on. Humans, through evolution, are
+          excellent in estimating relative depth and 3D structure of
+          contents in a scene. Achieving similar levels of accuracy
+          through machines forms a fundamental problem in computer
+          vision. Examples of applications <a href="#some-apps">appear
+          below</a>.
+	  <!-- A large variety of ongoing techniques for 3D -->
+          <!-- reconstruction exist in the literature specific to different -->
+          <!-- applications. For instance, the method of -->
+          <!-- Structure-From-Motion (SFM), Simultaneous Localization And -->
+          <!-- Mapping (SLAM) are used for reconstructing an entire -->
+          <!-- environment while dedicated methods exploiting human -->
+          <!-- structure exist for modelling people in 3D from images and -->
+          <!-- videos.  --> In my thesis, I have focused on mitigating
+	  some of the issues faced by current methods in using the SFM
+	  technique, and in monocular 3D Human modelling.</p>
           <br>
           <h2 class="w3-center">Contributions</h3>
           <div class="w3-center">
@@ -149,17 +167,45 @@
           
           <br><br>
           
-          <p>I address the problem of exploiting massive unlabelled in-the-wild datasets for different learning frameworks pertaining to improve performance of 3D modelling of scenes and humans. My contributions span several aspects of learning from data,</p>
+          <p>I address the problem of exploiting massive unlabelled
+          in-the-wild datasets for different learning frameworks
+          pertaining to improve performance of 3D modelling of scenes
+          and humans. My contributions span several aspects of
+          learning from data:</p>
           
           <ul>
-            <li>Create a dataset consisting of images of real world scenes. Automatically process the images to create training data with labels for the task at hand. These labels does not require manual interventions but uses off-the-shelf techniques along with other specific constraints. The generated labels at times can be noisy and suffer slight deviations from the ground truth. The large volume of datasets ensures the effect of such noisy labels are negligible.</li>
-            <li>Design novel deep learning architecture to account for wide variations while learning specific tasks from real `in-the-wild' datasets.</li>
-            <li>Adopt semi-supervised approaches where the model is jointly trained on large amounts in-the-wild unlabelled data and much smaller set of labelled data. The labelled data is required to supervise the model for task specific outputs(eg. predicting 3D body joint locations) while weak supervision/constraints are used learn from the unlabelled data. The quantity and in-the-wild variations in the unlabelled data enables the model to learn robust intermediate feature maps that can be applied in real world scenarios.</li>
-            <li>Adopt un-supervised approaches where only weak constraints are used for learning. In this setting no annotations are required and are used in problems which even small amounts of ground truth labels are not available.</li>
+            <li>Creating a dataset consisting of images of real world
+            scenes, and automatically processes these images to create
+            training data with labels for the task at hand. These
+            labels do not require manual interventions but uses
+            off-the-shelf techniques along with other specific
+            constraints. The generated labels at times can be noisy
+            and suffer slight deviations from the ground truth. The
+            large volume of datasets ensures the effect of such noisy
+            labels are negligible.</li>
+            <li>Designing novel deep learning architecture to account
+            for wide variations while learning specific tasks from
+            real `in-the-wild' datasets.</li>
+            <li>Adopting semi-supervised approaches where the model is
+            jointly trained on large amounts in-the-wild unlabelled
+            data and much smaller set of labelled data. The labelled
+            data is required to supervise the model for task specific
+            outputs(eg. predicting 3D body joint locations) while weak
+            supervision/constraints are used learn from the unlabelled
+            data. The quantity and in-the-wild variations in the
+            unlabelled data enables the model to learn robust
+            intermediate feature maps that can be applied in real
+            world scenarios.</li>
+            <li>Adopting un-supervised approaches where only weak
+            constraints are used for learning. In this setting no
+            annotations are required and are used in problems which
+            even small amounts of ground truth labels are not
+            available.</li>
           </ul>
 
           <br>
           <h2 class="w3-center">Applications</h3>
+          <a name="some-apps"></a>
           <br>
           <h3 class="w3-left">SFM Applications</h4>
           <p class="w3-center"><img style="width: 90%" src="images/SFM Applications.jpg"></p>
@@ -241,7 +287,7 @@
 
       <div class="w3-container panel" id="semisuppose">
         <div class="w3-container sub-heading">
-          <h1>Semi Supervised Human Pose Estimation</h1>
+          <h1>Semi-Supervised Human Pose Estimation</h1>
         </div>
         <div class="w3-container sub-content">
           <p>
@@ -340,10 +386,10 @@
         <div class="w3-container sub-content">
           <ul class="publication" style="text-align: justify;">
             <li>
-              <strong>R. Mitra</strong>, J. Zhang, S. Narayan, S. Ahmed, S. Chandran, A. Jain, <b>Improved Descriptors for Patch Matching and Reconstruction</b>, in proceedings of ICCV Workshop on Compact and Efficient Feature Representation and Learning (CEFRL) (<b>ICCV Workshop 2017</b>), Venice, October 2017. <a href="https://arxiv.org/abs/1701.06854">Link</a>
+              <strong>R. Mitra</strong>, J. Zhang, S. Narayan, S. Ahmed, Sharat Chandran, A. Jain, <b>Improved Descriptors for Patch Matching and Reconstruction</b>, in proceedings of ICCV Workshop on Compact and Efficient Feature Representation and Learning (CEFRL) (<b>ICCV Workshop 2017</b>), Venice, October 2017. <a href="https://arxiv.org/abs/1701.06854">Link</a>
             </li>
             <li>
-              <strong>R. Mitra</strong>, N. Doiphode, U. Gautam, S. Narayan, S. Ahmed, S. Chandran, A. Jain, <b>A Large Dataset for Improving Patch Matching</b>, in (arXiv e-prints 2017). <a href="\href{https://github.com/rmitra/PS-Dataset">Project Page</a>
+              <strong>R. Mitra</strong>, N. Doiphode, U. Gautam, S. Narayan, S. Ahmed, Sharat Chandran, A. Jain, <b>A Large Dataset for Improving Patch Matching</b>, in (arXiv e-prints 2017). <a href="\href{https://github.com/rmitra/PS-Dataset">Project Page</a>
             </li>
             <li>
               N. Doiphode, <strong>R. Mitra</strong>, S. Ahmed, A. Jain, <b>An Improved Learning Framework for Covariant Local Feature Detection</b> in proceedings of Asian Conference on Computer Vision (<b>ACCV 2018</b>), Perth, December 2018. <a href="https://arxiv.org/pdf/1811.00438.pdf">Link</a>
