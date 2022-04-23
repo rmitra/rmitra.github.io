@@ -83,8 +83,8 @@
             Structure-From-Motion (SFM) technique reconstructs 3D
             point clouds of an environment from a collection of
             images, but there has been keen interest in modelling a
-            human subject in 3D from a single RGB image. In my thesis
-            I have focused on mitigating some of current issues faced
+            human subject in 3D from a single RGB image. In my thesis,
+            I have focused on mitigating some of the current issues faced
             by these methods. I have proposed semi-supervised deep
             learning techniques which can utilise large volumes of
             un-annotated in-the-wild datasets to improve the accuracy
@@ -188,19 +188,19 @@
             real `in-the-wild' datasets.</li>
             <li>Adopting semi-supervised approaches where the model is
             jointly trained on large amounts in-the-wild unlabelled
-            data and much smaller set of labelled data. The labelled
+            data and a much smaller set of labelled data. The labelled
             data is required to supervise the model for task specific
             outputs(eg. predicting 3D body joint locations) while weak
-            supervision/constraints are used learn from the unlabelled
+            supervision/constraints are used to learn from the unlabelled
             data. The quantity and in-the-wild variations in the
             unlabelled data enables the model to learn robust
             intermediate feature maps that can be applied in real
             world scenarios.</li>
-            <li>Adopting un-supervised approaches where only weak
-            constraints are used for learning. In this setting no
+            <li>Adopting novel extensions to un-supervised approaches where only weak
+              constraints are used for learning. In this setting no
             annotations are required and are used in problems which
             even small amounts of ground truth labels are not
-            available.</li>
+            available. Our modifications improves the overall efficacy of the existing methods.</li>
           </ul>
 
           <br>
@@ -224,7 +224,7 @@
           <h1>PhotoSynth Dataset</h1>
         </div>
         <div class="w3-container sub-content">
-          <p>To enhance the performance of CNN based descriptors, we introduce a novel dataset that overcomes many of the drawbacks of existing datasets used of training descriptors. We begin with collecting data from publicly available large collection of images from the internet which are taken in-the-wild and exhibit wide variations in content, viewpoints, scale and illumination. We use Microsoft PhotoSynth for this purpose. We collected 30 scenes with each scene comprising of a collection of around 250 images appx. Sample images from different are shown below,</p>
+          <p>To enhance the performance of CNN based descriptors, we introduce a novel dataset that overcomes many of the drawbacks of existing datasets used of training descriptors. We begin with collecting data from a publicly available large collection of images from the internet which are taken in-the-wild and exhibit wide variations in content, viewpoints, scale and illumination. We use Microsoft PhotoSynth for this purpose. We collected 30 scenes with each scene comprising of a collection of around 250 images appx. Sample images from different are shown below,</p>
           <br>
           <p class="w3-center"><img style="width: 75%" src="images/PS_Dataset_Images.jpg"></p>
           <h4 class="w3-center">Sample pairs of images from our proposed dataset showing viewpoint, scale and illumination variations</h4>
@@ -238,8 +238,8 @@
           <br>
 
           <p>
-            We exploit the Structure From Motion process and its outputs to generate the desired data. Specifically, we perform SFM on each of the image collections using SIFT descriptors for point correspondences. The SFM process outputs i) reconstructed 3D points ii) set of corresponding 2D locations from images corresponding to each 3D point, ii) estimated intrinsic and extrinsic parameters. The transitivity relationship between point correspondences(i.e.a correspondence between pair of images (A, B) and (B,C) ensures correspondence between pairs (A, C)).
-            This enables the SFM process to match corresponding points between pair (A, C) which would been otherwise unlikely to obtain when matched directly using SIFT descriptors. The set of corresponding 2D locations given a 3D point may contain images that are taken from very similar viewpoints and scale. We propose a novel algorithm to prune out these near duplicate entries from the set using estimated intrinsic and extrinsic camera parameters. Our pruning algorithm is also be used to customise the amount of variability between corresponding pairs in terms viewpoints and scale for different tasks.
+            We exploit the Structure From Motion process and its output to generate the desired data. Specifically, we perform SFM on each of the image collections using SIFT descriptors for point correspondences. The SFM process outputs i) reconstructed 3D points ii) set of corresponding 2D locations from images corresponding to each 3D point, ii) estimated intrinsic and extrinsic parameters. The transitivity relationship between point correspondences(i.e.a correspondence between a pair of images (A, B) and (B,C) ensures correspondence between pairs (A, C)).
+            This enables the SFM process to match corresponding points between pair (A, C) which would been otherwise unlikely to obtain when matched directly using SIFT descriptors. The set of corresponding 2D locations given a 3D point may contain images that are taken from very similar viewpoints and scale. We propose a novel algorithm to prune out these near duplicate entries from the set using the estimated intrinsic and extrinsic camera parameters. Our pruning algorithm is also be used to customise the amount of variability between corresponding pairs in terms of viewpoints and scale for different tasks.
             State-of-the-art descriptor learning frameworks trained on our proposed dataset outperform significantly those that are trained existing datasets on matching point correspondences. In the image below, we show patches matched by our model against others on the 'Fountain P-11' scene from Strecha et al which provides images with wide baselines. One can observe that our model outperforms others in matching corresponding patches differing in large viewpoints
           </p>
 
@@ -260,18 +260,17 @@
           <p>
             The CNN based descriptor models mentioned previously operates on patches which are normalised in
             terms of scale and rotation. As a consequence, the normalized patch ensures the descriptor computed are
-            in turn invariant to scale and rotation. The normalisation requires 'scale' and 'dominant orientation' values
+            in turn invariant to scale and rotation. The normalisation require 'scale' and 'dominant orientation' values
             which are evaluated by the keypoint detector and provided along with the location for each detected point.
             However, in certain applications like densely matching
             every pixel(not just keypoints) lying in the shared region between two images, the 'scale' and 'orientation'
             values are not available. To improve matching accuracy in such scenarios, we propose a multi-resolution
             CNN architecture to encode descriptors without requiring normalisation yet achieving invariance to scale.
-            In this architecture, the network takes in patches cropped at 3 different resolutions centered around the
+            In this architecture, the network takes in patches cropped at 3 different resolutions, centered around the
             same point and extracts feature maps using the same feature extractor, concatenates the features and finally
             encodes them into the output descriptor. Using features from patches cropped at different resolution helps in
             capturing information at different scales. Our proposed architecture trained on our novel dataset using metric
-            learning outperforms competing methods when input patches are not normalized. We also demonstrate the
-            superior SFM based 3D reconstruction on benchmark <b>Strecha</b> dataset when point correspondences are
+            learning outperforms competing methods when input patches are not normalized. We also demonstrate superior SFM based 3D reconstruction on benchmark <b>Strecha</b> dataset when point correspondences are
             obtained using descriptors computed by our model on non-normalised patches in the following figure.
           </p>
           <br>
@@ -294,16 +293,16 @@
             We propose a semi-supervised approach which can jointly train a model on large unlabelled images of human motion along with a small set of 3D labelled images to estimate 3D body joint location from
             monocular RGB images. In our approach, we apply state-of-the art metric learning framework [10] used
             for learning patch descriptors on time-synchronized multi-view images to learn an embedding of images
-            capturing implicit 3D structure without requiring labels. Time-synchronized multi-view images implies,
+            capturing the implicit 3D structure without requiring labels. Time-synchronized multi-view images implies,
             image sets capturing poses from several viewpoints at every time instant from a video sequence of human
-            motion. In our setting, 'anchor-positive' pair consist of images taken at the same time instant but from
+            motion. In our setting, a 'anchor-positive' pair consist of images taken at the same time instant but from
             different viewpoints while a 'anchor-negative' pair has images taken at different time instants. Choosing the
             'anchor, positive, negative' in such a way ensures discrimination between 'positive' and 'negative' is done
             on the basis of pose alone. To eliminate the possibility of the model discriminating a 'negative' based on
             subject appearance instead of pose we ensure the 'negative' belong to the same subject as that of the 'anchor'.
-            Since the 'anchor' and 'positive' are images belonging to different viewpoints, our learned embedding are
+            Since the 'anchor' and 'positive' are images belonging to different viewpoints, our learned embeddings are
             invariant to viewpoints. Metric learning ensures that in the learnt embedding space, euclidean distance is
-            proportional to similarity in the 3D pose as shown below,
+            proportional to the similarity in the 3D pose as shown below,
           </p>
 
           <br>
@@ -325,7 +324,7 @@
 
           <p>
             In our experiments, we follow previous works in mimicking the scenario of leveraging large no. of
-            unlabelled images with a small fraction of labelled images on the Human3.6M dataset. We split the dataset
+            unlabelled images along with a small fraction of labelled images from the Human3.6M dataset. We split the dataset
             into labelled and unlabelled parts and progressively reduce the set of labelled images. We demonstrate that
             the accuracy of our proposed learning framework degrades to a much smaller extent compared to other
             approaches when 3D supervision is extremely limited (shown in images below).
@@ -367,10 +366,10 @@
           <br>
 
           <p>
-            Recently, unsupervised approaches have been proposed in Wang et al. CVPR 2019 and Zhao et al. NeurIPS 2020, learn to estimate textures from images of the subjects taken in the wild without requiring ground truth textures. These methods given an RGB image of the subject and a corresponding SMPL mesh, estimate a texture map corresponding to mesh. Comparing the input RGB image and a rendered image using the mesh and the estimated textures is used in learning. The SMPL meshes are obtained from an off-the-shelf predictor. The meshes being naked body models does not capture shape deformations due to clothing. Furthermore, errors in prediction results in incorrect representation of shape and pose. We demonstrate that refining the initial predicted shape and pose to capture clothing deformations improves the efficacy of the unsupervised methods.
+            Recently, unsupervised approaches have been proposed in Wang et al. CVPR 2019 and Zhao et al. NeurIPS 2020, learn to estimate textures from images of the subjects taken in the wild without requiring ground truth textures. These methods given an RGB image of the subject and a corresponding SMPL mesh, estimate a texture map corresponding to mesh. Comparing the input RGB image and a rendered image using the mesh and the estimated textures is used in learning. The SMPL meshes are obtained from an off-the-shelf predictor. The meshes being naked body models, does not capture shape deformations due to clothing. Furthermore, prediction of shape and pose contains errors which leads to incorrect representation of the subject. We demonstrate that refining the initial predicted shape and pose to capture clothing deformations improves the efficacy of the unsupervised methods.
           </p>
           <p>
-            We extend the unsupervised framework presented in Zhao et al. NeurIPS 2020 for generating full body textures from a single RGB image. We refine the initial predicted SMPL mesh to capture shape deformation due to clothing, ensuring a better match with the foreground human silhouette. We deform the meshes in an hierarchical fashion in 2 stages using the method proposed in Zhu et al. CVPR 2019. In the first stage 3D displacement vectors for joints are predicted such that after incorporating the displacements their projections align with of the corresponding actual 2D joint locations. In the next stage, we displacement vectors to uniformly sampled points on the mesh surface is predicted such that the projection of the displaced points lies on the human silhouette boundary. An additional re-identification based similarity loss along with the perceptual loss is also applied. We show that the re-identification loss helps in generating texture maps which are more consistent real world images specially in body part boundaries. Qualitative comparisons between images rendered using textures estimated by Zhou et al and our model (shown in image below) demostrates higher consistency of textures between the images rendered by our model and GT images specially in pheripheral regions of the human subjects.
+            We extend the unsupervised framework presented in Zhao et al. NeurIPS 2020 for generating full body textures from a single RGB image. We refine the initial predicted SMPL mesh to capture shape deformation due to clothing, ensuring a better match with the foreground human silhouette. We deform the meshes in a hierarchical fashion in 2 stages using the method proposed in Zhu et al. CVPR 2019. In the first stage 3D displacement vectors for joints are predicted such that after incorporating the displacements their projections align with of the corresponding actual 2D joint locations. In the next stage, we displacement vectors to uniformly sampled points on the mesh surface is predicted such that the projection of the displaced points lies on the human silhouette boundary. An additional re-identification based similarity loss along with the perceptual loss is also applied. We show that the re-identification loss helps in generating texture maps which are more consistent real world images specially in body part boundaries. Qualitative comparisons between images rendered using textures estimated by Zhou et al and our model (shown in the image below) demostrate higher consistency of textures between the images rendered by our model and GT images specially in pheripheral regions of the human subjects.
           </p>
           <br>
           <p class="w3-center"><img style="width: 75%;" src="images/hpbtt_vs_ours.png"></p>
