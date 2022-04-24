@@ -104,23 +104,18 @@
             <!-- <br> -->
             <!-- The robustness of a descriptor to scale is largely attributed to normalising patches in terms of scale before computing its descriptors. However, in certain applications like dense matching of pixels between two images normalising patches is infeasible due to unavailability of scale information at every pixel. Hence, I propose a multi-resolution architecture CNN model to compute scale invariant descriptors without requiring any normalisation. We perform correspondence matching and 3D reconstruction on benchmark datasets using such non-normalized patches to demonstrate its efficacy. -->
             <br>
-            In modelling humans from monocular images, current fully
-            supervised methods requires large amounts 3D annotated
-            images which are captured in indoor settings using
-            sophisticated motion capture setups. Hence, these methods
-            do not generalise well to in-the-wild settings. To this
-            end, we propose a semi-supervised approach which can
-            utilise multi-view images captured in the wild without
-            requiring 3D annotations. In our approach, we jointly
-            learn i) to capture an embedding for 3D human pose from
-            multi-view images that is invariant to multiple views, and
-            ii) to estimate 3D joint locations from our embedding
-            using a small amount of 3D supervision.  Finally, to have a
-            complete representation of a human subject digitally, a
-            fully textured mesh model is essential. In this regard, we
-            present an unsupervised framework that estimates textures
-            of the human subject given a single RGB image and an
-            estimated mesh.
+            In modelling humans from monocular images, current fully supervised methods requires large amounts 
+            3D annotated images which are captured in indoor settings using sophisticated motion capture setups. 
+            Hence, these methods do not generalise well to in-the-wild settings. To this end, we propose a 
+            semi-supervised approach which can utilise multi-view images captured in the wild without requiring 
+            3D annotations. In our approach, we jointly learn i) to capture an embedding for 3D human pose from 
+            multi-view images that is invariant to multiple views, and ii) to estimate 3D joint locations from 
+            our embedding using a small amount of 3D supervision. Finally, to have a complete representation of 
+            a human subject digitally, a fully textured mesh model is essential. In this regard, unsupervised 
+            methods estimating textures given a single image and an estimated mesh of the subject have came 
+            into prominence due to unavailability of ground truth textures from real world images. We improve 
+            upon an existing unsupervised method by using ensuring higher satisfaction of the weak constraints 
+            used in learning.
             <!-- We enhance the efficacy of an -->
             <!-- existing framework that learn to generate textures by -->
             <!-- ensuring consistency between textures obtained from -->
