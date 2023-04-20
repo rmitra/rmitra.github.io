@@ -76,35 +76,55 @@
         </div>
         <div class="w3-container sub-content w3-border w3-border-black">
           <p>
-            Modelling the world in three dimensions (3D) has been a long standing problem in computer
-            vision. Expectedly, a large variety of techniques exist for 3D modelling from either a collection
-            of images, or, at the other extreme, a single image. Traditionally, the Structure-From-Motion
-            (SFM) technique reconstructs 3D point clouds of an environment from a (large) collection of
-            images whereas in considering a single image, there has been a natural interest in modelling
-            human subjects. In this thesis, I have focused on mitigating some of the current issues faced
-            by these methods. I have proposed semi-supervised deep learning techniques which can utilise
-            large volumes of un-annotated in-the-wild datasets to improve the accuracy of existing 3D modelling techniques.
+            Modelling the world in three dimensions (3D) has been a
+            long standing problem in computer vision. Expectedly, a
+            large variety of techniques exist for 3D modelling from
+            either a collection of images, or, at the other extreme, a
+            single image. Traditionally, the Structure-From-Motion
+            (SFM) technique reconstructs 3D point clouds of an
+            environment from a collection of images whereas in
+            considering a single image, there has been a natural
+            interest in modelling human subjects. In this thesis, I
+            have focused on mitigating some of the issues
+            faced by current methods. I have proposed semi-supervised
+            deep learning techniques which can utilise large volumes
+            of un-annotated in-the-wild datasets to improve the
+            accuracy of existing 3D modelling techniques.
             <br>
-            Finding point correspondences between images using local patch descriptors like the popular 
-            Scale-invariant feature transform (SIFT) is an essential step in reconstructing 3D with SFM.
-            While deep-learning (DL) based descriptors models have been shown to (barely) outperform
-            SIFT, there is room for improvement for generalization. To further improve the accuracy, I 
-            provide a framework to automatically generate pairs of similar and dissimilar patches from a large
-            in-the-wild dataset of image collections exhibiting wide variations in viewpoint and illumination.
+            Finding point correspondences between images using local
+            patch descriptors like the popular Scale-invariant feature
+            transform (SIFT) is an essential step in reconstructing 3D
+            with SFM.  While deep-learning (DL) based descriptors
+            models have been shown to (barely) outperform SIFT, there
+            is room for improvement for generalization. To further
+            improve the accuracy, I provide a framework to
+            automatically generate pairs of similar and dissimilar
+            patches from a large in-the-wild dataset of image
+            collection (curated as a part of this thesis) exhibiting
+            wide variations in viewpoint and illumination.
             <br>
-            In modelling humans from monocular images, current fully supervised methods requires
-            large amounts 3D annotated images which are captured in indoor settings using sophisticated
-            motion capture setups. Hence, these methods do not generalise well to in-the-wild settings. To
-            this end, we propose a semi-supervised approach which can utilise multi-view images captured
-            in the wild without requiring 3D annotations. In our approach, we jointly learn i) to capture an
-            embedding for 3D human pose from multi-view images that is invariant to multiple views, and
-            ii) to estimate 3D joint locations from our embedding using a small amount of 3D supervision.
+            In modelling humans from monocular images, current fully
+            supervised methods requires large amounts of 3D annotated
+            images which are captured in indoor settings using
+            sophisticated motion capture setups. Hence, these methods
+            do not generalise well to in-the-wild settings. To this
+            end, we propose a semi-supervised approach which can
+            utilise multi-view images captured in the wild without
+            requiring 3D annotations. In our approach, we jointly
+            learn i) to capture an embedding for 3D human pose from
+            multi-view images that is invariant to multiple views, and
+            ii) to estimate 3D joint locations from our embedding
+            using a small amount of 3D supervision.
             <br>
-            In the end, to have a complete representation of a human subject digitally, a fully textured
-            mesh model is essential. In this regard, unsupervised methods estimating textures given a single
-            image and an estimated mesh of the subject have came into prominence due to unavailability
-            of ground truth textures from real world images. We improve upon an existing unsupervised
-            method by using ensuring higher satisfaction of the weak constraints used in learning.            
+            In the end, to have a complete representation of a human
+            subject digitally, a fully textured mesh model is
+            essential. In this regard, unsupervised methods estimating
+            textures given a single image and an estimated mesh of the
+            subject have came into prominence due to unavailability of
+            ground truth textures from real world images. We improve
+            upon an existing unsupervised method by ensuring
+            higher satisfaction of the weak constraints used in
+            learning.
           </p>
         </div>
       </div>
